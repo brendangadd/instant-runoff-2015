@@ -6,28 +6,20 @@ let seats = {};
 
 let electionWorker = new Worker('/js/election-worker.js');
 
+Chart.defaults.global.responsive = true;
+Chart.defaults.global.maintainAspectRatio = false;
+Chart.defaults.global.scaleOverride = true;
+Chart.defaults.global.scaleSteps = 10;
+Chart.defaults.global.scaleStepWidth = 25;
+Chart.defaults.global.scaleStartValue = 0;
 let chartLabels = ['Bloc', 'Conservative', 'Green', 'Liberal', 'NDP'];
-let chartOptions = {
-   scaleOverride: true,
-   scaleSteps: 10,
-   scaleStepWidth: 25,
-   scaleStartValue: 0
-};
-let fptpChart = new Chart(
-      document.querySelector('#chart-fptp').getContext('2d')
-   ).Bar({
-      labels: chartLabels,
-      datasets: [{data: [10, 99, 1, 184, 44]}]
-   }, chartOptions)
-;
-colorChart(fptpChart);
+let chartColors = ['#09c', '#00e', '#0c0', '#a00', '#f90'];
 
-let irvCtx = document.querySelector('#chart-irv').getContext('2d');
-let irvChart = new Chart(irvCtx).Bar({
-   labels: ['Bloc', 'Conservative', 'Green', 'Liberal', 'NDP'],
-   datasets: [{data: [0, 0, 0, 0, 0]}]
-}, chartOptions);
-colorChart(irvChart);
+let fptpChart = simpleBarChart('#chart-fptp', chartLabels, [10, 99, 1, 184, 44]);
+colorChart(fptpChart, chartColors);
+
+let irvChart = simpleBarChart('#chart-irv', chartLabels, [0, 0, 0, 0, 0]);
+colorChart(irvChart, chartColors);
 
 let dataIndex = {
    [Party.BLOC]: 0,
@@ -128,16 +120,20 @@ function addResultTableRow(electionResult) {
    document.querySelector('#result-table tbody').appendChild(tr);
 }
 
-function colorChart(chart) {
-   chart.datasets[0].bars[0].fillColor = '#09c';
-   chart.datasets[0].bars[0].strokeColor = '#09c';
-   chart.datasets[0].bars[1].fillColor = '#00f';
-   chart.datasets[0].bars[1].strokeColor = '#00f';
-   chart.datasets[0].bars[2].fillColor = '#0c0';
-   chart.datasets[0].bars[2].strokeColor = '#0c0';
-   chart.datasets[0].bars[3].fillColor = '#a00';
-   chart.datasets[0].bars[3].strokeColor = '#a00';
-   chart.datasets[0].bars[4].fillColor = '#f90';
-   chart.datasets[0].bars[4].strokeColor = '#f90';
+function simpleBarChart(selector, labels, data) {
+   let ctx = document.querySelector(selector).getContext('2d');
+   let chart = new Chart(ctx).Bar({
+         labels: labels,
+         datasets: [{data}]
+      }, {scaleShowVerticalLines: false})
+   ;
+   return chart;
+}
+
+function colorChart(chart, colors) {
+   for (let i = 0; i < colors.length; i++) {
+      chart.datasets[0].bars[i].fillColor = colors[i];
+      chart.datasets[0].bars[i].strokeColor = colors[i];
+   }
    chart.update();
 }
