@@ -1,6 +1,9 @@
 body {
    padding-top: 60px;
 }
+abbr[title] {
+   border-bottom: none;
+}
 
 .state-inelection #start {
    display: none;
@@ -44,7 +47,7 @@ body {
 }
 .seat-count h3 {
    margin: 0;
-   font-size: 24px;
+   font-size: 22px;
 }
 .seat-count span {
    display: block;
