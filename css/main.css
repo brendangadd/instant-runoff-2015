@@ -1,0 +1,75 @@
+body {
+   padding-top: 60px;
+}
+
+.state-inelection #start {
+   display: none;
+}
+
+.state-preelection #progress-container {
+   display: none;
+}
+.state-inelection #progress-container {
+   display: block;
+}
+
+.state-preelection #result-table {
+   display: none;
+}
+.state-inelection #result-table {
+   display: table;
+}
+
+.election-chart {
+   display: block;
+   width: 100%;
+   height: 400px;
+}
+
+.seat-count {
+   overflow: auto;
+}
+.seat-count > div {
+   float: left;
+   width: 20%;
+   padding: 16px 0 10px;
+   text-align: center;
+   color: #eee;
+}
+.seat-count > div:first-child {
+   border-radius: 6px 0 0 6px;
+}
+.seat-count > div:last-child {
+   border-radius: 0 6px 6px 0;
+}
+.seat-count h3 {
+   margin: 0;
+   font-size: 24px;
+}
+.seat-count span {
+   display: block;
+   font-size: 36px;
+}
+
+@media (max-width: 767px) {
+   .seat-count > div {
+      float: none;
+      width: auto;
+      padding: 4px 8px;
+      text-align: left;
+   }
+   .seat-count > div:first-child {
+      border-radius: 6px 6px 0 0;
+   }
+   .seat-count > div:last-child {
+      border-radius: 0 0 6px 6px;
+   }
+   .seat-count h3 {
+      display: inline-block;
+      font-size: 14px;
+   }
+   .seat-count span {
+      display: inline;
+      font-size: 14px;
+   }
+}
