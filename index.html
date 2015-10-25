@@ -2,15 +2,125 @@
 <html>
    <head>
       <meta charset="utf-8"/>
-      <title>Instant Runoff – Election 2015</title>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+      <title>Instant Runoff Vote – #Elxn42</title>
+
+      <link rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
+            integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
+            crossorigin="anonymous"/>
+      <link rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"
+            integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX"
+            crossorigin="anonymous"/>
+      <link rel="stylesheet" href="css/main.css"/>
    </head>
-   <body>
-      <canvas id="canvas" width="300" height="300"></canvas>
+   <body class="state-preelection">
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+         <div class="container">
+            <div class="navbar-header">
+               <a class="navbar-brand" href="">Instant Runoff Vote – #Elxn42</a>
+            </div>
+         </div>
+      </nav>
+
+      <div class="container">
+
+         <h1>What would happen if Canada used instant runoff vote for its
+         electoral system?</h1>
+
+         <p>
+            On October 19, Canada elected a new government using a
+            <a href="https://en.wikipedia.org/wiki/First-past-the-post_voting">first-past-the-post</a>
+            system (i.e. vote for one candidate, winner takes all).
+         </p>
+         <p>
+            These days, there is a lot of talk about electoral reform. One
+            possible alternative is
+            <a href="https://en.wikipedia.org/wiki/Instant-runoff_voting">instant runoff voting</a>.
+            So what would happen if Canada's forty-second election used
+            instant runoff voting instead of first-past-the-post? This
+            simulation tries to answer that question.
+         </p>
+         <p style="font-weight: bold;">
+            Click "Start Instant Runoff Election" below to begin
+            the simulation.
+         </p>
+         <p>
+            To learn about the method and assumptions used to transform a
+            first-past-the-post system into instant runoff, check out
+            <a href="#">this article</a>.
+         </p>
+
+         <div class="row">
+            <div class="col-sm-6">
+               <h2>First-Past-the-Post</h2>
+               <canvas id="chart-fptp" class="election-chart" height="400"></canvas>
+            </div>
+            <div class="col-sm-6">
+               <h2>Instant Runoff</h2>
+               <canvas id="chart-irv" class="election-chart" height="400"></canvas>
+            </div>
+         </div>
+
+         <div class="seat-count" style="margin-top: 16px;">
+            <div id="seat-count-bloc" style="background-color: #09c;">
+               <h3>Bloc</h3>
+               <span>0</span>
+            </div>
+            <div id="seat-count-conservative" style="background-color: #00f;">
+               <h3>Conservative</h3>
+               <span>0</span>
+            </div>
+            <div id="seat-count-green" style="background-color: #0a0;">
+               <h3>Green</h3>
+               <span>0</span>
+            </div>
+            <div id="seat-count-liberal" style="background-color: #a00;">
+               <h3>Liberal</h3>
+               <span>0</span>
+            </div>
+            <div id="seat-count-ndp" style="background-color: #f90;">
+               <h3><abbr title="New Democratic Party">NDP</abbr></h3>
+               <span>0</span>
+            </div>
+         </div>
+
+         <div style="text-align: center; margin-top: 16px; height: 60px;">
+            <button id="start" class="btn btn-success btn-lg">Start Instant Runoff Election</button>
+            <div id="progress-container" class="progress">
+               <div id="progress"
+                     class="progress-bar"
+                     role="progressbar"
+                     aria-valuenow="0"
+                     aria-valuemin="0"
+                     aria-valuemax="100"
+                     style="min-width: 2em;">
+                  0%
+               </div>
+            </div>
+         </div>
+
+         <div style="width: 100%; overflow: auto;">
+            <table id="result-table" class="table table-striped">
+               <thead>
+                  <tr>
+                     <th>District</th>
+                     <th>First-Past-the-Post</th>
+                     <th>Instant Runoff</th>
+                  </tr>
+               </thead>
+               <tbody></tbody>
+            </table>
+         </div>
+
+      </div>
 
       <script src="js/vendor/chart-1.0.2.js"></script>
 
       <script src="js/constants.js"></script>
-      <script src="js/instant-runoff.js"></script>
       <script src="js/main.js"></script>
    </body>
 </html>

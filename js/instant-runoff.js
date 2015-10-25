@@ -146,7 +146,7 @@ function generateVotes(numVotes, nextRankDistribution) {
       votes.push(new Vote);
    }
 
-   while (generateRanks(votes, nextRankDistribution));
+   while(generateRanks(votes, nextRankDistribution));
 
    return votes;
 }
