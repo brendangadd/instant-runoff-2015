@@ -1,23 +1,2 @@
-'use strict';
-
-importScripts('instant-runoff.js');
-
-this.onmessage = function(event) {
-   let votes = generateVotes(
-      event.data.totalVotes,
-      event.data.nextRankDistribution
-   );
-
-   let election = new InstantRunoffElection(votes);
-   let plurality = election.leader();
-
-   while (!election.hasWinner()) {
-      election.advanceRound();
-   }
-
-   postMessage({
-      districtName: event.data.districtName,
-      winner: election.leader(),
-      plurality
-   });
-};
+"use strict";importScripts("../bower_components/babel-polyfill/browser-polyfill.js"),importScripts("instant-runoff.js"),onmessage=function(t){for(var e=generateVotes(t.data.totalVotes,t.data.nextRankDistribution),a=new InstantRunoffElection(e),n=a.leader();!a.hasWinner();)a.advanceRound();postMessage({districtName:t.data.districtName,winner:a.leader(),plurality:n})};
+//# sourceMappingURL=election-worker.js.map

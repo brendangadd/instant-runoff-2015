@@ -1,6 +1,7 @@
 body {
    padding-top: 60px;
 }
+
 abbr[title] {
    border-bottom: none;
 }
@@ -47,7 +48,11 @@ abbr[title] {
 }
 .seat-count h3 {
    margin: 0;
+<<<<<<< HEAD
+   font-size: 24px;
+=======
    font-size: 22px;
+>>>>>>> gh-pages
 }
 .seat-count span {
    display: block;
