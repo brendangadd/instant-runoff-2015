@@ -4,7 +4,7 @@ let numDistricts = 1;
 let numElectionsCompleted = 0;
 let seats = {};
 
-let electionWorker = new Worker('election-worker.js');
+let electionWorker = new Worker('js/election-worker.js');
 
 Chart.defaults.global.responsive = true;
 Chart.defaults.global.maintainAspectRatio = false;
