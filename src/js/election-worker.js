@@ -1,8 +1,9 @@
 'use strict';
 
+importScripts('../bower_components/babel-polyfill/browser-polyfill.js')
 importScripts('instant-runoff.js');
 
-this.onmessage = function(event) {
+onmessage = function(event) {
    let votes = generateVotes(
       event.data.totalVotes,
       event.data.nextRankDistribution

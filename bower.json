@@ -1,0 +1,22 @@
+{
+  "name": "instant-runoff-2015",
+  "description": "Simulate an instant runoff election to project the outcome of the Canadian forty-second election under that system",
+  "main": "",
+  "authors": [
+    "Brendan Gadd"
+  ],
+  "license": "GPL-3.0",
+  "homepage": "https://github.com/brendangadd/instant-runoff-2015",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "Chart.js": "~1.0.2",
+    "babel-polyfill": "~0.0.1"
+  }
+}

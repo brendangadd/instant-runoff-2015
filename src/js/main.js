@@ -32,7 +32,7 @@ let dataIndex = {
 let client = new XMLHttpRequest();
 document.querySelector('#start').addEventListener('click', function() {
    this.setAttribute('disabled', 'disabled');
-   client.open('GET', 'data.json');
+   client.open('GET', 'resources/data.json');
    client.send();
    document.body.className = 'state-inelection';
 });
